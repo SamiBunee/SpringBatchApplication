@@ -1,4 +1,4 @@
-package bun.buni.batch.configurations;
+package bun.buni.configurations;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -6,7 +6,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import javax.sql.DataSource;
 
 @Configuration
-public class BatchConfiguration {
+public class ApplicationConfiguration {
 
     //Propiedades de la conexión:
     @Bean
