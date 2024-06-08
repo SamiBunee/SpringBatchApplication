@@ -25,7 +25,7 @@ public class ItemDecompressStep implements Tasklet {
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
         log.info("[STEP] Starting Decompression Step ♥ ♥ ♥ ♥ ♥ ♥ ");
 
-        Resource resource = resourceLoader.getResource("classpath:files/person.zip");
+        Resource resource = resourceLoader.getResource("classpath:files/persons.zip");
         String filePath = resource.getFile().getAbsolutePath();
 
         ZipFile zipFile = new ZipFile(filePath);
@@ -37,11 +37,11 @@ public class ItemDecompressStep implements Tasklet {
 
         Enumeration<? extends ZipEntry> entries = zipFile.entries();
 
-        while (entries.hasMoreElements()){
+        while (entries.hasMoreElements()) {
             ZipEntry zipEntry = entries.nextElement();
             File file = new File(destDir, zipEntry.getName());
 
-            if(file.isDirectory()){
+            if (file.isDirectory()) {
                 file.mkdirs();
             } else {
                 InputStream inputStream = zipFile.getInputStream(zipEntry);
