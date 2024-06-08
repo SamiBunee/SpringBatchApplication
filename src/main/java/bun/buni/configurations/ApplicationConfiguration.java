@@ -12,8 +12,8 @@ public class ApplicationConfiguration {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("com.mysql.oj.jdbc.Driver"); //or -> "org.h2.Driver"
-        dataSource.setUrl("jdbc:mysql://localhost:3306/batch_database");
+        dataSource.setDriverClassName("org.mariadb.jdbc.Driver"); //or -> "org.h2.Driver"
+        dataSource.setUrl("jdbc:mariadb://localhost:3306/batch_database");
         dataSource.setUsername("root");
         dataSource.setPassword("454514");
         return dataSource;
