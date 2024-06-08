@@ -54,7 +54,6 @@ public class BatchConfiguration {
      * STEPS:
      */
     @Bean
-    @StepScope
     public Step decompressFileStep() {
         return new StepBuilder("itemDecompressStep", jobRepository)
                 .tasklet(itemDecompressStep(), platformTransactionManager)
@@ -62,7 +61,6 @@ public class BatchConfiguration {
     }
 
     @Bean
-    @StepScope
     public Step readFileStep() {
         return new StepBuilder("itemReaderStep", jobRepository)
                 .tasklet(itemReaderStep(),platformTransactionManager)
@@ -70,7 +68,6 @@ public class BatchConfiguration {
     }
 
     @Bean
-    @StepScope
     public Step processDataStep() {
         return new StepBuilder("itemProcessorStep", jobRepository)
                 .tasklet(itemProcessorStep(),platformTransactionManager)
@@ -78,7 +75,6 @@ public class BatchConfiguration {
     }
 
     @Bean
-    @StepScope
     public Step writeDataStep() {
         return new StepBuilder("itemWriterStep", jobRepository)
                 .tasklet(itemWriterStep(),platformTransactionManager)
@@ -90,7 +86,7 @@ public class BatchConfiguration {
      */
     @Bean
     public Job readCSVJob(){
-        return new JobBuilder("", jobRepository)
+        return new JobBuilder("readCSVJob", jobRepository)
                 .start(decompressFileStep())
                 .next(readFileStep())
                 .next(processDataStep())
